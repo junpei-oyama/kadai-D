@@ -19,6 +19,12 @@ class SemanticVersion:
         self.patch = 0
         return self
 
+    def major_version_up(self):
+        self.major += 1
+        self.minor = 0
+        self.patch = 0
+        return self
+
 
 def main():
     py370 = SemanticVersion(major=3, minor=7, patch=0)
@@ -51,6 +57,14 @@ def main():
 
     py380 = py370.minor_version_up()
     print(SemanticVersion(3, 8, 0) == py380)  # True
+
+    print()
+
+    # Python3.7.0 というバージョンを表現したもの
+    py370 = SemanticVersion(major=3, minor=7, patch=0)
+
+    py400 = py370.major_version_up()
+    print(SemanticVersion(4, 0, 0) == py400)  # True
 
 
 if __name__ == '__main__':
